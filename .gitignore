@@ -105,7 +105,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-data
+#data
 .vscode
 .idea
 
@@ -118,3 +118,4 @@ mmseg/.mim
 
 # Pytorch
 *.pth
+*.pt
