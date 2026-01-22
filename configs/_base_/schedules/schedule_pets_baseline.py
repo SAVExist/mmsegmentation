@@ -2,7 +2,10 @@
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
 # OptimWrapper — это обёртка над оптимизатором. Она нужна, чтобы стандартные оптимизаторы 
 # и более сложные реализации из mmsegmentation имели один интерфейс, совместимый с Runner 
-optim_wrapper = dict(type='OptimWrapper', optimizer=optimizer, clip_grad=None)
+optim_wrapper = dict(
+    type='OptimWrapper',
+    optimizer=dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005),  # <-- LR 0.001
+    paramwise_cfg=dict(custom_keys=dict(head=dict(lr_mult=10.0))))
 
 # Определяем распорядок LR
 param_scheduler = [
