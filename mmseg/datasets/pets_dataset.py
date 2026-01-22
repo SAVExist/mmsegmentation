@@ -12,7 +12,7 @@ class PetsDataset(BaseSegDataset):
     # 2. цветовая палитра 
     METAINFO = dict(
         classes=("background", "cat", "dog"),
-        palette=[[0, 0, 0], [255, 0, 0], [0, 255, 0]]
+        palette=[[0, 0, 0], [255, 0, 0], [0, 0, 255]]
     )
 
     # Конструктор оставляем, как был

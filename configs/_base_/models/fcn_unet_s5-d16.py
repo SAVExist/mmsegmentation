@@ -40,7 +40,13 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
+            type='CrossEntropyLoss', 
+            use_sigmoid=False, 
+            loss_weight=1.0,
+            # Взвешивание классов: фон (0) получает меньший вес, кот и собака — больший
+            # Это заставит модель обращать больше внимания на малые классы
+            class_weight=[0.2, 1.0, 1.0]  # [background, cat, dog]
+        )),
     auxiliary_head=dict(
         type='FCNHead',
         in_channels=128,
@@ -53,7 +59,11 @@ model = dict(
         norm_cfg=norm_cfg,
         align_corners=False,
         loss_decode=dict(
-            type='CrossEntropyLoss', use_sigmoid=False, loss_weight=0.4)),
+            type='CrossEntropyLoss', 
+            use_sigmoid=False, 
+            loss_weight=0.4,
+            class_weight=[0.2, 1.0, 1.0]  # Аналогичное взвешивание для вспомогательной головы
+        )),
     # model training and testing settings
     train_cfg=dict(),
     test_cfg=dict(mode='slide', crop_size=256, stride=170))
