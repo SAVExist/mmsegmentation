@@ -488,6 +488,14 @@ def hsidrive_palette():
             [255, 166, 0], [0, 204, 204]]
 
 
+def pets_dataset_classes():
+    return ["background", "cat", "dog"]
+
+
+def pets_dataset_palette():
+    return [[0, 0, 0], [255, 0, 0], [0, 0, 255]]
+
+
 dataset_aliases = {
     'cityscapes': ['cityscapes'],
     'ade': ['ade', 'ade20k'],
