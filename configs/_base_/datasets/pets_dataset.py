@@ -5,7 +5,6 @@ data_root='practicum_work/data/train_dataset_for_students'
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
-    dict(type='RandomResize', scale=(256, 256), ratio_range=(0.5, 2.0)),
     dict(type='RandomCrop', crop_size=(256, 256), cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PhotoMetricDistortion'),

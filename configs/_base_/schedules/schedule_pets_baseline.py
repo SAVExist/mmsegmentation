@@ -4,7 +4,7 @@ optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
 # и более сложные реализации из mmsegmentation имели один интерфейс, совместимый с Runner 
 optim_wrapper = dict(
     type='OptimWrapper',
-    optimizer=dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0005),  # <-- LR 0.001
+    optimizer=dict(type='AdamW', lr=0.0001, weight_decay=0.01),  # AdamW + низкий LR
     paramwise_cfg=dict(custom_keys=dict(head=dict(lr_mult=10.0))))
 
 # Определяем распорядок LR
